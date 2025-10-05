@@ -15,7 +15,7 @@
 ├── inheritance.py           # Inheritance: Persona → Customer/Employee
 ├── relationship_types.py    # Relationships: Association, Aggregation, Composition
 ├── polymorphism.py          # Polymorphism: Unified interface, varied behaviors
-├── persona_abstraction.py   # Abstraction: Abstract base classes
+├── abstraction.py   # Abstraction: Abstract base classes
 └── README.md
 ```
 
@@ -83,7 +83,7 @@ Polymorphism:
 
 ---
 
-### 6️⃣ `persona_abstraction.py`  
+### 6️⃣ `abstraction.py`  
 Abstraction using Python’s `abc` module:  
 - Defines abstract class `BillingEntity` with abstract methods  
 - `Persona` or subclasses must implement these methods
