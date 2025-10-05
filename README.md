@@ -108,5 +108,5 @@ Each file is self-contained and focuses on a single OOP concept, allowing you to
 - [Python abc module](https://docs.python.org/3/library/abc.html)
 
 ---
-
-Happy Coding! 🎉
+If you also want to sharpen your 🐍 skills..
+Fork this repo and happy Coding! 🎉
