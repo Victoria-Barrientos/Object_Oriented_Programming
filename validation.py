@@ -42,13 +42,17 @@ class PersonaWithValidation:
             billing_address: str,
             balance: float
         ):
-        self.name = name
-        self.email = email
-        self.bank = bank
-        # Safe guard card_number as a private attribute ==> __card_number       
-        self.__card_number = card_number
-        self.__billing_address = billing_address
-        self.__balance = balance
+        if card_number.isdigit() and 13 <= len(card_number) <= 19:
+            self.__card_number = card_number
+            self.name = name
+            self.email = email
+            self.bank = bank
+            # Safe guard card_number as a private attribute ==> __card_number       
+            self.__card_number = card_number
+            self.__billing_address = billing_address
+            self.__balance = balance
+        else:
+            raise ValueError("Card number must be between 13 and 19 digits, all numeric. User creation failed.")
     
     @property #Getter
     def Balance(self):
@@ -61,26 +65,3 @@ class PersonaWithValidation:
             print(f"Your new balance is: ${self.__balance}")
         else:
             raise ValueError("Balance cannot be negative")
-        
-user1 = PersonaWithoutValidation(
-        "Delicia",
-        "delivega@gmail.com",
-        "Chase",
-        "1234567812345678",
-        "123 Main St",
-        2023.48
-    )
-
-user2 = PersonaWithoutValidation(
-        "Martina",
-        "marti@gmail.com",
-        "Galicia",
-        "125-680-112", # Invalid card number
-        "123 Main St",
-        2023.48
-        )
-
-user1.Balance = 3000.00  # Valid update
-user1.Balance = -500.00  # Invalid update
-
-print(user1)
