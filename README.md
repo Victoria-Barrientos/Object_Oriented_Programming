@@ -1,6 +1,6 @@
 # 🐍 Object Oriented Programming in Python
 
-> Explore and master OOP concepts through hands-on Python scripts.  
+> Explored and mastered OOP concepts through hands-on Python scripts.  
 > Each module demonstrates a core principle—encapsulation, validation, inheritance, relationships, polymorphism, and abstraction.
 
 ---
