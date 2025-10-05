@@ -42,7 +42,7 @@ class IndividualPersona(BillingEntity):
         Billing Address: {self.__billing_address}
         Balance: ${self.__balance}
         """
-class CorporateAccount(ABC):
+class CorporateAccount(BillingEntity):
     @abstractmethod
     def __init__(self, corporate_name: str, tax_bracket: str, bank: str, card_number: str, billing_address: str, balance: float):
         self.corporate_name = corporate_name
