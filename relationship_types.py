@@ -96,35 +96,3 @@ class Borrower:
 	def return_book(self, book: Book):
 		if book in self._borrowed_books:
 			self._borrowed_books.remove(book)
-
-def main():
-	# Create authors
-	author1 = Author("Simone de Beauvoir")
-	author2 = Author("Jane Austen")
-
-	# Create books (composition)
-	book1 = Book("All Men Are Mortal", author1)
-	book2 = Book("She Came To Stay", author1)
-	book3 = Book("Pride and Prejudice", author2)
-
-	# Create library and add books (aggregation)
-	library = Library("Fatima Al-Qarawiyyin Library")
-	library.add_book(book1)
-	library.add_book(book2)
-	library.add_book(book3)
-
-	# Create borrower (association)
-	borrower = Borrower("Victoria Barrientos")
-
-	# Borrow and return books
-	book2.borrow(borrower)
-	print(f"{borrower.name} borrowed: {[b.title for b in borrower.borrowed_books]}")
-	book2.return_book()
-	print(f"{borrower.name} borrowed after return: {[b.title for b in borrower.borrowed_books]}")
-
-	# Find books by author
-	jane_austen_books = library.find_books_by_author(author2)
-	print(f"Books by {author2.name}: {[b.title for b in jane_austen_books]}")
-
-if __name__ == "__main__":
-	main()
