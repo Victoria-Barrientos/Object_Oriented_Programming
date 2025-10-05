@@ -105,70 +105,14 @@ class Manager(Employee):
 
 class Discount:
     # Mixin class for discount functionality
-    def apply_discount(self, amount, discount_percentage):
+    def apply_discount(self, discount_percentage):
         if 0 <= discount_percentage <= 100:
-            discount_amount = (discount_percentage / 100) * amount
-            return amount - discount_amount
+            self.discount_percentage = discount_percentage
         else:
             raise ValueError("Discount percentage must be between 0 and 100")
         
 class EmployeeWithDiscount(Employee, Discount):
     # EmployeeWithDiscount inherits from both Employee and Discount (Multiple Inheritance)
-    def __init__(self, name, email, bank, card_number, billing_address, balance, employee_id, amount, discount_percentage):
+    def __init__(self, name, email, bank, card_number, billing_address, balance, employee_id, discount_percentage):
         Employee.__init__(self, name, email, bank, card_number, billing_address, balance, employee_id)
-        Discount.__init__(self, amount, discount_percentage)  
-
-# Example usage
-if __name__ == "__main__":
-    p = Persona("Victoria", "viictoriabarrientos@example.com", "Bank of Python", "1234567812345678", "123 Python St", 1000.0)
-    print(p)
-
-    c = Customer("Delicia", "deliciavega@example.com", "Chase", "8765432187654321", "456 Java Ave", 500.0, 150)
-    print(c)
-
-    e = Employee("Martina", "martibe@example.com", "Wells Fargo", "1122334455667788", "789 C# Blvd", 1200.0, "E123")
-    print(e)
-
-    m = Manager("Nala", "nalita22@example.com", "Citibank", "9988776655443322", "654 Go Ln", 2500.0, "E789", "Sales")
-    print(m)
-
-    d = Discount()
-
-    ewd = EmployeeWithDiscount("Luna", "lunacascabelera@example.com", "Bank of Code", "4433221100112233", "321 Ruby Rd", 1300.0, "E456", 300, 15)
-    print(ewd)
-
-    discounted_price = d.apply_discount(200, 10)  # 10% discount
-    print(f"Discounted Price: ${discounted_price}")
-
-    
-    
-    print(f"Manager's Department: {m.Department}")
-    print(f"Customer's Balance before update: ${c.Balance}")
-    c.Balance = 750.0  # Update balance using setter
-    print(f"Customer's Balance after update: ${c.Balance}")
-    print(f"Employee's ID: {e.Employee_id}")
-    print(f"Customer's Loyalty Points before update: {c.Loyalty_points}")
-    c.Loyalty_points = 200  # Update loyalty points using setter
-    print(f"Customer's Loyalty Points after update: {c.Loyalty_points}")
-    print(f"Employee's Card Number (masked): {e.Card_number}")
-    print(f"Manager's Card Number (masked): {m.Card_number}")
-    print(f"Manager's Employee ID: {m.Employee_id}")
-    print(f"Manager's Balance before update: ${m.Balance}")
-    m.Balance = 3000.0  # Update balance using setter
-    print(f"Manager's Balance after update: ${m.Balance}")
-    print(f"Manager's Department before update: {m.Department}")
-    m.Department = "Marketing"  # Update department using setter
-    print(f"Manager's Department after update: {m.Department}")
-    print(f"Employee's Balance before update: ${e.Balance}")
-    e.Balance = 1500.0  # Update balance using setter
-    print(f"Employee's Balance after update: ${e.Balance}")
-    print(f"Persona's Card Number (masked): {p.Card_number}")
-    print(f"Persona's Balance before update: ${p.Balance}")
-    p.Balance = 1100.0  # Update balance using setter
-    print(f"Persona's Balance after update: ${p.Balance}")
-    print(f"Persona's Card Number (masked): {p.Card_number}")
-
-    print(f"Persona's Email: {p.email}")
-    print(f"Customer's Email: {c.email}")
-    print(f"Employee's Email: {e.email}")
-    print(f"Manager's Email: {m.email}")
+        Discount.__init__(self, discount_percentage)  
